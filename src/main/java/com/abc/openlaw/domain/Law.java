@@ -6,26 +6,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by scamisay on 05/02/16.
+ * Created by scamisay on 07/02/16.
  */
 public class Law {
 
     @Id
     private String id;
 
-    private String general;
+    private List<LawVersion> versions;
 
-    private List<Article> articles;
-
-    public Law(String general) {
-        this.general = general;
-    }
-
-    public Law addArticle(Article anArticle){
-        if(articles == null){
-            articles = new ArrayList<Article>();
+    public void addNewLawVersion(LawVersion aLawVersion){
+        if(aLawVersion == null){
+            throw new RuntimeException("LawVersion is mandatory");
         }
-        articles.add(anArticle);
-        return this;
+        if(!aLawVersion.isNew()){
+            throw new RuntimeException("LawVersion must be new");
+        }
+        if(versions == null){
+            versions = new ArrayList<LawVersion>();
+        }
+        versions.add(aLawVersion);
     }
 }

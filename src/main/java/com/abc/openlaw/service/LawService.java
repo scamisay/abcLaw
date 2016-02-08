@@ -1,6 +1,6 @@
 package com.abc.openlaw.service;
 
-import com.abc.openlaw.domain.Law;
+import com.abc.openlaw.domain.LawVersion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.abc.openlaw.repository.LawRepository;
@@ -16,11 +16,11 @@ public class LawService {
     @Autowired
     private LawRepository lawRepository;
 
-    public List<Law> findAll(){
+    public List<LawVersion> findAll(){
         return lawRepository.findAll();
     }
 
-    public Law save(Law aLaw){
+    public LawVersion save(LawVersion aLaw){
         return lawRepository.save(aLaw);
     }
 }
